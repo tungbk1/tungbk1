@@ -286,8 +286,8 @@ def main():
 		start_up_successful = False
 		ser = None
 		print ('Error: Reader not connected')
-        playmusic("music/khongtheketnoidaudoc_11.mp3")
 		send_all('Error: Reader not connected',datetime.now().strftime('%H:%M') + ', ' + date.today().strftime('%d/%m'),MY_TOKEN) # send infomation to User interface
+		playmusic("music/khongtheketnoidaudoc_11.mp3")
 	
 	if start_up_successful == True:
 		while have_internet() == False:
@@ -296,8 +296,8 @@ def main():
 			time.sleep(10)		
 		# Notification to start reading
 		print("Start reading !!!!!!!!!\n")
-        playmusic("music/batdaudocthe_7.mp3")
-		send_all('Start: Start using NFC reader',datetime.now().strftime('%H:%M') + ', ' + date.today().strftime('%d/%m') + '; ID thiet bi: ' + machine_id,MY_TOKEN) # send infomation to User interface	
+		send_all('Start: Start using NFC reader',datetime.now().strftime('%H:%M') + ', ' + date.today().strftime('%d/%m') + '; ID thiet bi: ' + machine_id,MY_TOKEN) # send infomation to User interface
+		playmusic("music/batdaudocthe_7.mp3")
 	else:
 		# Wait 10 secs and perform reboot 
 		time.sleep(10)
@@ -313,11 +313,11 @@ def main():
 		#print(f"NFC card data: {data}")
 		#time2 = time.time()
 		if data == "Wrong data format":
-            playmusic("music/dulieusaidinhdang_4.mp3")
 			send_all('Error: Wrong data format',datetime.now().strftime('%H:%M') + ', ' + date.today().strftime('%d/%m'),MY_TOKEN)
+			playmusic("music/dulieusaidinhdang_4.mp3")
 		elif data == "Hexa not valid":
-            playmusic("music/dulieuhexasai_5.mp3")
 			send_all('Error: Hexa not valid',datetime.now().strftime('%H:%M') + ', ' + date.today().strftime('%d/%m'),MY_TOKEN)
+			playmusic("music/dulieuhexasai_5.mp3")
 		# If NFC card is presented and NFC reader return valid data
 		elif data != "Hexa not valid" and data != "Wrong data format" and data != None:
 			#print(f"Received data: {data[0]},{data[1][0:5]},{data[1][6:8]},{data[1][9:13]}, type: {type(data[1])}")
@@ -372,8 +372,8 @@ def main():
 			except:
 				res = "Lost connection to OCD server"
 				print("Error: "+res+" !!!!!!!!!\n")
-                playmusic("music/khongtheketnoiserver_7.mp3")
 				send_all('Error: Lost connection to OCD server',datetime.now().strftime('%H:%M') + ', ' + date.today().strftime('%d/%m'),MY_TOKEN)
+				playmusic("music/khongtheketnoiserver_7.mp3")
 				
 				try: 
 					conn = sqlite3.connect("pi_card_reader/Database/log_retry.db")
@@ -434,8 +434,8 @@ def main():
 					# Wait for our pop-up dialog in our UI to disappear
 					time.sleep(pop_up_time)
 				else:
-                    playmusic("music/dulieukhonghople_4.mp3")
 					send_all('Error: Student Info Not Found',datetime.now().strftime('%H:%M') + ', ' + date.today().strftime('%d/%m'),MY_TOKEN)
+					playmusic("music/dulieukhonghople_4.mp3")
 					time.sleep(5)
 			
 
